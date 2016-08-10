@@ -1,0 +1,16 @@
+====================
+The ``add`` function
+====================
+
+------------------
+How to use ``add``
+------------------
+
+The ``add`` function needs to be imported from the **mymath** module like this:
+
+    >>> from mymath import add
+
+Now you can use ``add`` to add various data types together, such as integers, floats, strings, and more. Here's an example:
+
+    >>> add(1, 2)
+    3
