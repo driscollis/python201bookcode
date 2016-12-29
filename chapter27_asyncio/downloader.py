@@ -1,42 +1,34 @@
+import aiohttp
 import asyncio
+import async_timeout
 import os
-import urllib.request
 
-async def download_coroutine(url):
-    """
-    A coroutine to download the specified url
-    """
-    request = urllib.request.urlopen(url)
-    filename = os.path.basename(url)
 
-    with open(filename, 'wb') as file_handle:
-        while True:
-            chunk = request.read(1024)
-            if not chunk:
-                break
-            file_handle.write(chunk)
-    msg = 'Finished downloading {filename}'.format(filename=filename)
-    return msg
+async def download_coroutine(session, url):
+    with async_timeout.timeout(10):
+        async with session.get(url) as response:
+            filename = os.path.basename(url)
+            with open(filename, 'wb') as f_handle:
+                while True:
+                    chunk = await response.content.read(1024)
+                    if not chunk:
+                        break
+                    f_handle.write(chunk)
+            return await response.release()
 
-async def main(urls):
-    """
-    Creates a group of coroutines and waits for them to finish
-    """
-    coroutines = [download_coroutine(url) for url in urls]
-    completed, pending = await asyncio.wait(coroutines)
-    for item in completed:
-        print(item.result())
+
+async def main(loop):
+    urls = ["http://www.irs.gov/pub/irs-pdf/f1040.pdf",
+        "http://www.irs.gov/pub/irs-pdf/f1040a.pdf",
+        "http://www.irs.gov/pub/irs-pdf/f1040ez.pdf",
+        "http://www.irs.gov/pub/irs-pdf/f1040es.pdf",
+        "http://www.irs.gov/pub/irs-pdf/f1040sb.pdf"]
+
+    async with aiohttp.ClientSession(loop=loop) as session:
+        for url in urls:
+            await download_coroutine(session, url)
 
 
 if __name__ == '__main__':
-    urls = ["http://www.irs.gov/pub/irs-pdf/f1040.pdf",
-            "http://www.irs.gov/pub/irs-pdf/f1040a.pdf",
-            "http://www.irs.gov/pub/irs-pdf/f1040ez.pdf",
-            "http://www.irs.gov/pub/irs-pdf/f1040es.pdf",
-            "http://www.irs.gov/pub/irs-pdf/f1040sb.pdf"]
-
-    event_loop = asyncio.get_event_loop()
-    try:
-        event_loop.run_until_complete(main(urls))
-    finally:
-        event_loop.close()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main(loop))
