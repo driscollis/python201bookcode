@@ -1,5 +1,4 @@
 import asyncio
-import time
 
 async def my_task(seconds):
     """
@@ -7,7 +6,7 @@ async def my_task(seconds):
     """
     print('This task is taking {} seconds to complete'.format(
         seconds))
-    time.sleep(seconds)
+    await asyncio.sleep(seconds)
     return 'task finished'
 
 
