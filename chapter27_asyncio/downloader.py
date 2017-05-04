@@ -25,8 +25,8 @@ async def main(loop):
         "http://www.irs.gov/pub/irs-pdf/f1040sb.pdf"]
 
     async with aiohttp.ClientSession(loop=loop) as session:
-        for url in urls:
-            await download_coroutine(session, url)
+        tasks = [download_coroutine(session, url) for url in urls]
+        await asyncio.gather(*tasks)
 
 
 if __name__ == '__main__':
