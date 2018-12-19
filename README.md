@@ -69,5 +69,3 @@ Python 3 is all you need to use this book which you can get from the [Python web
 ## About the Author
 
 Michael Driscoll has been an application developer using Python for over a decade. He is the author of the popular Python blog, [The Mouse Vs. the Python](https://www.blog.pythonlibrary.org/) as well as several other Python books including **Python 101**, **Python Interviews** and **ReportLab - PDF Processing with Python**.
-
-The book itself can be purchased through [Gumroad](https://gum.co/py201) or on [Leanpub](https://leanpub.com/python201).
