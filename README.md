@@ -1,6 +1,6 @@
 # Python 201: Intermediate Python
 
-<a href="https://leanpub.com/python201/"><img src="http://www.blog.pythonlibrary.org/wp-content/uploads/2017/10/python201_thumb.jpg" alt="Jupyter Notebook 101" align="right"></a>
+<a href="https://leanpub.com/python201/"><img src="http://www.blog.pythonlibrary.org/wp-content/uploads/2017/10/python201_thumb.jpg" alt="Python 201: Intermediate Python" align="right"></a>
 
 This is the code repository for the book: **Python 201: Intermediate Python** by Michael Driscoll
 
