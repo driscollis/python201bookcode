@@ -5,7 +5,7 @@
 This is the code repository for the book: **Python 201: Intermediate Python** by Michael Driscoll
 
 ## What is this book about?
-Python 201 is the sequel to my first book, [Python 101](https://leanpub.com/python_101/). If you already know the basics of Python and now you want to go to the next level, then this is the book for you! This book is for intermediate level Python programmers only. There won't be any beginner chapters here. This book is based on **Python 3**.
+**Python 201: Intermediate Python** is the sequel to my first book, [Python 101](https://leanpub.com/python_101/). If you already know the basics of Python and now you want to go to the next level, then this is the book for you! This book is for intermediate level Python programmers only. There won't be any beginner chapters here. This book is based on **Python 3**.
 
 The book will be broken up into five parts. Here's how:
 
